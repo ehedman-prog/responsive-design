@@ -1,0 +1,76 @@
+body {
+    background-color: #000000;
+    color: #FFFFFF;
+    min-height: 100vh;
+       /* Claude's help with making the image stick to the bottom:
+       Makes the page at least as tall as the screen 
+       (100vh = 100% of the viewport height) */
+    display: flex; 
+    flex-direction: column;
+}
+
+header {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+main {
+    margin-left: 32px;
+    margin-right: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+       /* Claude's help with making the image stick to the bottom:
+       flex-grow: 1 = "take all the leftover space in my parent".
+       Without it, main is only as tall as its content and the extra
+       height of the body is left empty underneath it. */
+}
+
+h3 {
+    font-family: "Baloo Bhai 2", sans-serif;
+}
+
+a {
+    font-family: "Source Sans 3", sans-serif;
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+    gap: 28px;
+}
+
+h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+p {
+    font-family: "Source Sans 3", sans-serif;
+    text-align: center;
+    font-weight: 200;
+}
+
+div {
+    margin-top: auto;
+       /* Claude's help with making the image stick to the bottom:
+       An auto margin in flexbox takes all the free space on that side.
+       This pushes the image box down to the bottom of main,
+       while the h1 and paragraph stay together at the top. */
+       margin-top: auto;
+       width: 100%;
+}
+
+img {
+    width: 100%;
+    height: 285px;
+    object-fit: none;
+    display: block;
+       /* Claude's help with making the image stick to the bottom:
+       Removes the small gap browsers leave under inline images */
+}
