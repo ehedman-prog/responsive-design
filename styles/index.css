@@ -52,6 +52,7 @@ ul {
     list-style: none;
     padding-left: 0;
     display: flex;
+    flex-direction: column;
     gap: 28px;
     margin: 0;
 }
@@ -107,8 +108,39 @@ p {
     border: none;
 }
 
-nav {
-    display: flex;
+.header__nav {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 0;
+    overflow-x: hidden;
+    z-index: 1;
+    transition: 0.05s;
+    padding-top: 60px;
+    background-color: gray;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+.open-btn {
+    font-size:30px;
+    cursor: pointer;
+}
+
+.open-btn:hover {
+    background-color: white;
+}
+
+.closebtn {
+    cursor: pointer;
+}
+
+a:hover {
+    background-color: lightgray;
 }
 
 @media (min-width: 768px) {
@@ -116,10 +148,6 @@ nav {
     body {
         max-width: 617px;
         margin: 0 auto;
-    }
-
-    .header__list {
-        display: none;
     }
 
     h1 {
@@ -140,6 +168,24 @@ nav {
         margin-top: 45px;
     }
 
+    .header__nav {
+        position: static;
+        width: auto;
+        height: auto;
+        overflow-x: visible;
+        padding-top: 0;
+        background-color: transparent;
+    }
+
+    .header__list {
+        flex-direction: row;
+    }
+
+    .header__menu-button,
+    .header__close-button {
+        display: none;
+    }
+
 } 
 
 @media (min-width: 1440px) {
@@ -147,10 +193,6 @@ nav {
     body {
         max-width: 864px;
         margin: 0 auto;
-    }
-
-    .header__list {
-        display: none;
     }
 
     h1 {

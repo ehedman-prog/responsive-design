@@ -20,7 +20,9 @@
 
         <h3>Head.</h3>
 
-        <nav>
+        <nav class="header__nav" id="side-nav">
+
+            <button class="header__close-button" onclick="closeNav()">&times;</button>
 
             <ul class="header__list">
                 <li><a href="#">Works</a></li>
@@ -28,11 +30,25 @@
                 <li><a href="#">Contact</a></li>
             </ul>
 
-            <button class="header__menu-button">
-                <img src="images/Icon-hamburger-dots.svg.svg" alt="menu button">
-            </button>
-
         </nav>
+
+        <button class="header__menu-button">
+            <img src="images/Icon-hamburger-dots.svg.svg" alt="menu button"
+            class=" open-btn" onclick="openNav()">
+            &#9776; 
+        </button>
+
+        <script>
+    function openNav() {
+      document.getElementById("side-nav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+      document.getElementById("side-nav").style.width = "0";
+      document.getElementById("main").style.marginLeft = "0";
+    }
+  </script>
 
     </header>
 
