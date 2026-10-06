@@ -75,21 +75,40 @@ p {
 }
 
 .picture-frame {
-    margin-top: auto;
-    /* Claude's help with making the image stick to the bottom:
-       An auto margin in flexbox takes all the free space on that side.
-       This pushes the image box down to the bottom of main,
-       while the h1 and paragraph stay together at the top. */
+    /* Claude's help with making the image resizing more flexible:*/
+    margin-top: 57px;
+        /* fixed gap between the paragraph and the image (from Figma) */
+    flex-grow: 1;
+        /* flex-grow: 1 = "take all the leftover height in main".
+           Before, the extra height became a gap above the image.
+           Now the frame itself grows, so the gap stays the same size. */
+    display: flex;
+        /* Makes the frame a flex container so the image inside
+           stretches to fill the frame's full height */
+    min-height: 285px;
+    /* The frame never gets shorter than the Figma image height */
     width: 100%;
 }
 
-img {
+.picture-frame__image {
+    /* Claude's help with making the image resizing more flexible:*/
     width: 100%;
-    height: 285px;
+        /* No fixed height: the frame decides it.*/
     object-fit: cover;
-    display: block;
-    /* Claude's help with making the image stick to the bottom:
-       Removes the small gap browsers leave under inline images */
+        /* cover crops the sides/top of the picture to fill the frame without 
+           squishing it */
+}
+
+.header__menu-button {
+    /* I changed the button color in figma becasue I couldn't see them against
+       the dark background with their original color, therefore they color is
+       also different here since I downloaded the svg with the changed color */
+    background-color: transparent;
+    border: none;
+}
+
+nav {
+    display: flex;
 }
 
 @media (min-width: 768px) {
@@ -97,6 +116,10 @@ img {
     body {
         max-width: 617px;
         margin: 0 auto;
+    }
+
+    .header__list {
+        display: none;
     }
 
     h1 {
@@ -110,9 +133,11 @@ img {
         line-height: 33px;
     }
     
-    img {
-        width: 100%; 
-        height: 512px;
+    /* Claude's help with making the image resizing more flexible:
+       Tablet: bigger minimum height and a smaller gap, from Figma */
+    .picture-frame{
+        min-height: 512px;
+        margin-top: 45px;
     }
 
 } 
@@ -122,6 +147,10 @@ img {
     body {
         max-width: 864px;
         margin: 0 auto;
+    }
+
+    .header__list {
+        display: none;
     }
 
     h1 {
@@ -135,9 +164,11 @@ img {
         line-height: 34px;
     }
 
-    img {
-        width: 100%; 
-        height: 328px;
+    /* Claude's help with making the image resizing more flexible:
+       Desktop: only the minimum height changes, it has the same 45px
+       gap as the tablet*/
+    .picture-frame{
+        min-height: 328px;
     }
 
 }
